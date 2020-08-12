@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
 import Chart from 'react-apexcharts';
+import { StyledChartContainer } from './LineChart.styled';
 
 export default function LineChart() {
   const [chartOptions, setChartOptions] = useState({
@@ -62,7 +63,7 @@ export default function LineChart() {
   ]);
 
   return (
-    <>
+    <StyledChartContainer>
       <Chart
         options={chartOptions}
         series={chartSeries}
@@ -70,6 +71,6 @@ export default function LineChart() {
         width='100%'
         height='100%'
       />
-    </>
+    </StyledChartContainer>
   );
 }
