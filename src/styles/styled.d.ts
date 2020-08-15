@@ -6,6 +6,7 @@ interface IColors {
   blue: string;
   light: string;
   white: string;
+  offWhite: string;
 }
 
 declare module 'styled-components' {

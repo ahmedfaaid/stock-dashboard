@@ -6,5 +6,6 @@ export const theme: DefaultTheme = {
     blue: '#1034a6',
     light: '#444040',
     white: '#ffffff',
-  },
+    offWhite: '#e6e6e6'
+  }
 };

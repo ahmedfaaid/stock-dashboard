@@ -21,7 +21,7 @@ export default function Layout({ children, ...props }: LayoutProps) {
       </header>
       <main style={{ position: 'relative', display: 'flex' }}>
         <Sidebar />
-        {children}
+        <div style={{ flexGrow: 1 }}>{children}</div>
       </main>
     </div>
   );
