@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const StyledCompanyContainer = styled.div`
   border-radius: 10px;
   background-color: ${({ theme }) => theme.colors.offWhite};
-  width: 30%;
+  width: 90%;
   height: 320px;
   max-height: 320px;
   padding: 15px;

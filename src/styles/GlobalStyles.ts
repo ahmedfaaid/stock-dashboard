@@ -1,4 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const GlobalStyles = createGlobalStyle`
   * {
@@ -16,4 +18,9 @@ export const GlobalStyles = createGlobalStyle`
     background-color: #1f1f1f;
     min-height: 100vh;
   }
+`;
+
+export const StyledLink = styled(Link)`
+  color: ${({ theme }) => theme.colors.blue};
+  margin-top: 5px;
 `;
