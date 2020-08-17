@@ -2,7 +2,11 @@ import React from 'react';
 import { StyledNewsContainer } from './CompStocks.styled';
 import { FullWidth, StyledTableData } from '../../styles/GlobalStyles';
 
-export default function CompStocks() {
+export interface Props {
+  currentStock?: string;
+}
+
+export default function CompStocks({ currentStock }: Props) {
   return (
     <StyledNewsContainer>
       <FullWidth style={{ textAlign: 'center' }}>

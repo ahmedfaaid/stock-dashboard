@@ -5,7 +5,11 @@ import {
 } from './CompInfo.styled';
 import { FullWidth, StyledTableData } from '../../styles/GlobalStyles';
 
-export default function CompInfo() {
+export interface Props {
+  currentStock?: string;
+}
+
+export default function CompInfo({ currentStock }: Props) {
   return (
     <StyledCompanyContainer>
       <StyledImageContainer>
