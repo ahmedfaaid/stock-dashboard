@@ -5,6 +5,7 @@ interface IColors {
   primary: string;
   blue: string;
   light: string;
+  grey: string;
   white: string;
   offWhite: string;
 }
