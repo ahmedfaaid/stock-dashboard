@@ -19,6 +19,10 @@ export const GlobalStyles = createGlobalStyle`
     min-height: 100vh;
   }
 
+  table {
+    border-collapse: collapse;
+  }
+
   td {
       padding-top: 10px;
       padding-bottom: 10px;

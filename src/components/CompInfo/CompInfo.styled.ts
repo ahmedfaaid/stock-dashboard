@@ -8,6 +8,10 @@ export const StyledCompanyContainer = styled.div`
   max-height: 320px;
   padding: 15px;
   box-shadow: 3px 4px 3px ${({ theme }) => theme.colors.white};
+
+  tr {
+    border-bottom: 1px solid ${({ theme }) => theme.colors.grey};
+  }
 `;
 
 export const StyledImageContainer = styled.div`

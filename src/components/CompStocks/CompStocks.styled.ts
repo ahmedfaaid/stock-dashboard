@@ -11,4 +11,8 @@ export const StyledNewsContainer = styled.div`
   justify-content: center;
   align-items: center;
   box-shadow: 3px 4px 3px ${({ theme }) => theme.colors.white};
+
+  tr {
+    border-bottom: 1px solid ${({ theme }) => theme.colors.grey};
+  }
 `;
