@@ -1,10 +1,9 @@
 import React from 'react';
 import {
   StyledCompanyContainer,
-  StyledImageContainer,
-  StyledDataContainer,
-  StyledTableData
+  StyledImageContainer
 } from './CompInfo.styled';
+import { FullWidth, StyledTableData } from '../../styles/GlobalStyles';
 
 export default function CompInfo() {
   return (
@@ -12,7 +11,7 @@ export default function CompInfo() {
       <StyledImageContainer>
         <img src='https://dummyimage.com/50x50/fff/000' alt='logo' />
       </StyledImageContainer>
-      <StyledDataContainer>
+      <FullWidth>
         <table>
           <tr>
             <td>Symbol</td>
@@ -39,7 +38,7 @@ export default function CompInfo() {
             <StyledTableData>Technology</StyledTableData>
           </tr>
         </table>
-      </StyledDataContainer>
+      </FullWidth>
     </StyledCompanyContainer>
   );
 }

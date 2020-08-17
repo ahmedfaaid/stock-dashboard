@@ -18,9 +18,23 @@ export const GlobalStyles = createGlobalStyle`
     background-color: #1f1f1f;
     min-height: 100vh;
   }
+
+  td {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
 `;
 
 export const StyledLink = styled(Link)`
   color: ${({ theme }) => theme.colors.blue};
   margin-top: 5px;
+`;
+
+export const FullWidth = styled.div`
+  width: 100%;
+`;
+
+export const StyledTableData = styled.td`
+  padding-left: 10px;
+  font-weight: 700;
 `;

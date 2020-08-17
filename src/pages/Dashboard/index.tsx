@@ -4,6 +4,7 @@ import LineChart from '../../components/LineChart';
 import CompInfo from '../../components/CompInfo';
 import CompNews from '../../components/CompNews';
 import { StyledInfoSection } from './Dashboard.styled';
+import CompStocks from '../../components/CompStocks';
 
 export default function Dashboard() {
   return (
@@ -13,6 +14,7 @@ export default function Dashboard() {
       </section>
       <StyledInfoSection>
         <CompInfo />
+        <CompStocks />
         <CompNews />
       </StyledInfoSection>
     </Layout>
