@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Chart from 'react-apexcharts';
+import moment from 'moment';
 import { StyledChartContainer } from './LineChart.styled';
 
 export interface Props {
@@ -8,6 +9,8 @@ export interface Props {
 }
 
 export default function LineChart({ currentStock }: Props) {
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [error, setError] = useState<boolean>(false);
   const [chartOptions, setChartOptions] = useState({
     chart: {
       id: 'stock-line',
@@ -16,15 +19,7 @@ export default function LineChart({ currentStock }: Props) {
       }
     },
     xaxis: {
-      categories: [
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday',
-        'Sunday'
-      ]
+      categories: []
     },
     yaxis: {
       labels: {
@@ -54,6 +49,9 @@ export default function LineChart({ currentStock }: Props) {
       shape: 'circle',
       strokeWidth: 2
     },
+    dataLabels: {
+      enabled: false
+    },
     tooltip: {
       theme: 'dark'
     }
@@ -61,10 +59,63 @@ export default function LineChart({ currentStock }: Props) {
 
   const [chartSeries, setChartSeries] = useState([
     {
-      name: 'Hours of Sleep',
-      data: [4.4, 3.5, 5.0, 4.2, 6.8, 8.1, 8.3]
+      name: 'Closing Price',
+      data: []
     }
   ]);
+
+  useEffect(() => {
+    const today = moment().unix();
+    const yearAgo = moment().subtract(1, 'years').unix();
+
+    async function fetchData(): Promise<void> {
+      setIsLoading(true);
+
+      try {
+        const data = await fetch(
+          `${process.env.REACT_APP_BASE_URL}stock/candle?symbol=${currentStock}&resolution=D&from=${yearAgo}&to=${today}&token=${process.env.REACT_APP_FINNHUB_TOKEN}`
+        )
+          .then(res => res.json())
+          .catch(err => {
+            setError(true);
+            setIsLoading(false);
+            console.log(err);
+          });
+
+        console.log(data);
+
+        const convertedDates = data.t.map((date: number) =>
+          moment.unix(date).format('DD-MM-YYYY')
+        );
+
+        setChartOptions(c => ({
+          ...chartOptions,
+          xaxis: {
+            categories: convertedDates
+          }
+        }));
+
+        setChartSeries(c => [
+          {
+            name: 'Closing Price',
+            data: data.c
+          }
+        ]);
+        setIsLoading(false);
+        setError(false);
+      } catch (error) {
+        setError(true);
+        setIsLoading(false);
+        console.log(`There was an error ${error}`);
+      }
+    }
+
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentStock]);
+
+  if (isLoading) return <p style={{ color: '#ffffff' }}>Loading...</p>;
+  if (error) return <p style={{ color: '#ffffff' }}>There was an error</p>;
 
   return (
     <StyledChartContainer>
