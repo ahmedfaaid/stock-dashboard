@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import Chart from 'react-apexcharts';
 import moment from 'moment';
-import { fetchCandles } from '../../utils/fetchCandles';
 import { StyledChartContainer } from './LineChart.styled';
 
 export interface Props {
@@ -57,6 +56,12 @@ export default function LineChart({ currentStock, today, yearAgo }: Props) {
     },
     tooltip: {
       theme: 'dark'
+    },
+    noData: {
+      text: 'Loading...',
+      style: {
+        fontSize: '20px'
+      }
     }
   });
 
@@ -107,7 +112,6 @@ export default function LineChart({ currentStock, today, yearAgo }: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentStock, today, yearAgo]);
 
-  if (isLoading) return <p style={{ color: '#ffffff' }}>Loading...</p>;
   if (error) return <p style={{ color: '#ffffff' }}>There was an error</p>;
 
   return (
