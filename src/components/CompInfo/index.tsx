@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   StyledCompanyContainer,
   StyledImageContainer
@@ -9,38 +9,87 @@ export interface Props {
   currentStock?: string;
 }
 
+export interface ICompInfo {
+  country: string;
+  currency: string;
+  exchange: string;
+  ipo: string;
+  marketCapitalization: number;
+  name: string;
+  phone: string;
+  shareOutstanding: number;
+  ticker: string;
+  webUrl: string;
+  logo: string;
+  finnhubIndustry: string;
+}
+
 export default function CompInfo({ currentStock }: Props) {
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(false);
+  const [compInfo, setCompInfo] = useState<null | ICompInfo>(null);
+
+  useEffect(() => {
+    async function fetchCompanyInfo() {
+      setIsLoading(true);
+
+      try {
+        console.log('fetching');
+        const res = await fetch(
+          `${process.env.REACT_APP_BASE_URL}stock/profile2?symbol=${currentStock}&token=${process.env.REACT_APP_FINNHUB_TOKEN}`
+        );
+        console.log('done fetching');
+
+        const data = await res.json();
+
+        setCompInfo(data);
+      } catch (error) {
+        setError(true);
+        console.log(`There was an error ${error}`);
+      }
+
+      setIsLoading(false);
+    }
+
+    fetchCompanyInfo();
+  }, [currentStock]);
+
+  if (isLoading) return <p style={{ color: '#ffffff' }}>Loading...</p>;
+  if (error) return <p style={{ color: '#ffffff' }}>There was an error</p>;
+
   return (
     <StyledCompanyContainer>
       <StyledImageContainer>
-        <img src='https://dummyimage.com/50x50/fff/000' alt='logo' />
+        <img src={compInfo!.logo} style={{ width: '50px' }} alt='logo' />
       </StyledImageContainer>
       <FullWidth>
         <table>
           <tbody>
             <tr>
               <td>Symbol</td>
-              <StyledTableData>AAPL</StyledTableData>
+              <StyledTableData>{compInfo!.ticker}</StyledTableData>
             </tr>
             <tr>
               <td>Name</td>
-              <StyledTableData>Apple Inc.</StyledTableData>
+              <StyledTableData>{compInfo!.name}</StyledTableData>
             </tr>
             <tr>
-              <td>Stock Price</td>
-              <StyledTableData>$437.50</StyledTableData>
+              <td>Market Cap</td>
+              <StyledTableData>
+                {compInfo!.marketCapitalization}
+              </StyledTableData>
             </tr>
             <tr>
               <td>Exchange</td>
-              <StyledTableData>NASDAQ/NMS (GLOBAL MARKET)</StyledTableData>
+              <StyledTableData>{compInfo!.exchange}</StyledTableData>
             </tr>
             <tr>
               <td>IPO</td>
-              <StyledTableData>1980-12-12</StyledTableData>
+              <StyledTableData>{compInfo!.ipo}</StyledTableData>
             </tr>
             <tr>
               <td>Industry</td>
-              <StyledTableData>Technology</StyledTableData>
+              <StyledTableData>{compInfo!.finnhubIndustry}</StyledTableData>
             </tr>
           </tbody>
         </table>

@@ -9,6 +9,10 @@ export const StyledCompanyContainer = styled.div`
   padding: 15px;
   box-shadow: 3px 4px 3px ${({ theme }) => theme.colors.white};
 
+  table {
+    margin-left: 20px;
+  }
+
   tr {
     border-bottom: 1px solid ${({ theme }) => theme.colors.grey};
   }
