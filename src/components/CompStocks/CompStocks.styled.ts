@@ -6,4 +6,10 @@ export const StyledExDataCard = styled(StyledDataCard)`
   justify-content: center;
   align-items: center;
   text-align: center;
+
+  td {
+    &:first-of-type {
+      text-align: left;
+    }
+  }
 `;
