@@ -1,0 +1,1 @@
+GET https://finnhub.io/api/v1/company-news?symbol=AAPL&from=2020-04-30&to=2020-05-01&token=bsmtb6frh5r99fh1domg
