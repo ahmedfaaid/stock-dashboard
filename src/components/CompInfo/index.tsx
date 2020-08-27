@@ -32,11 +32,9 @@ export default function CompInfo({ currentStock }: Props) {
       setIsLoading(true);
 
       try {
-        console.log('fetching');
         const res = await fetch(
           `${process.env.REACT_APP_BASE_URL}stock/profile2?symbol=${currentStock}&token=${process.env.REACT_APP_FINNHUB_TOKEN}`
         );
-        console.log('done fetching');
 
         const data = await res.json();
 
