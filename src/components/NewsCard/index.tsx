@@ -1,16 +1,35 @@
 import React from 'react';
-import { StyledNewsCard, StyledNewsHeading } from './NewsCard.styled';
+import {
+  StyledNewsCard,
+  StyledImageContainer,
+  StyledNewsHeading
+} from './NewsCard.styled';
 
-export default function NewsCard() {
+// export interface Props {
+//   category: string;
+//   datetime: number;
+//   headline: string;
+//   id: number;
+//   image: string;
+//   related: string;
+//   source: string;
+//   summary: string;
+//   url: string;
+// }
+
+export default function NewsCard({ news }) {
   return (
-    <StyledNewsCard style={{ marginBottom: '10px' }}>
-      <div>
-        <img src='https://dummyimage.com/50x50/000/fff' alt='News Feature' />
-      </div>
+    <StyledNewsCard
+      href={news.url}
+      target='_blank'
+      rel='noopener noreferrer'
+      style={{ marginBottom: '10px' }}
+    >
+      <StyledImageContainer>
+        <img src={news.image} style={{ width: '100%' }} alt='News Feature' />
+      </StyledImageContainer>
       <StyledNewsHeading>
-        <h3>
-          More sops needed to boost electronic manufacturing: Top govt official.
-        </h3>
+        <h3>{news.headline}</h3>
       </StyledNewsHeading>
     </StyledNewsCard>
   );
