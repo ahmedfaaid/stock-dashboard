@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledNewsContainer } from './CompStocks.styled';
+import { StyledExDataCard } from './CompStocks.styled';
 import { FullWidth, StyledTableData } from '../../styles/GlobalStyles';
 
 export interface Props {
@@ -8,7 +8,7 @@ export interface Props {
 
 export default function CompStocks({ currentStock }: Props) {
   return (
-    <StyledNewsContainer>
+    <StyledExDataCard>
       <FullWidth style={{ textAlign: 'center' }}>
         <table style={{ width: 'max-content', margin: 'auto' }}>
           <tbody>
@@ -35,6 +35,6 @@ export default function CompStocks({ currentStock }: Props) {
           </tbody>
         </table>
       </FullWidth>
-    </StyledNewsContainer>
+    </StyledExDataCard>
   );
 }

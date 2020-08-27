@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import {
-  StyledCompanyContainer,
-  StyledImageContainer
-} from './CompInfo.styled';
+import { StyledImageContainer } from './CompInfo.styled';
 import { FullWidth, StyledTableData } from '../../styles/GlobalStyles';
+import DataCard from '../DataCard';
 
 export interface Props {
   currentStock?: string;
@@ -58,7 +56,7 @@ export default function CompInfo({ currentStock }: Props) {
   if (error) return <p style={{ color: '#ffffff' }}>There was an error</p>;
 
   return (
-    <StyledCompanyContainer>
+    <DataCard>
       <StyledImageContainer>
         <img src={compInfo!.logo} style={{ width: '50px' }} alt='logo' />
       </StyledImageContainer>
@@ -94,6 +92,6 @@ export default function CompInfo({ currentStock }: Props) {
           </tbody>
         </table>
       </FullWidth>
-    </StyledCompanyContainer>
+    </DataCard>
   );
 }
