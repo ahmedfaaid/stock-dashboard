@@ -2,11 +2,21 @@ import styled from 'styled-components';
 
 export const StyledNavbar = styled.nav`
   width: 100%;
+  padding: 0 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const StyledLogoContainer = styled.div`
+  color: ${({ theme }) => theme.colors.white};
+`;
+
+export const StyledLogoLink = styled(NavLink)`
+  text-decoration: none;
 `;
 
 export const StyledNavContainer = styled.div`
-  width: 90%;
-  margin: auto;
   display: flex;
   justify-content: flex-end;
 `;

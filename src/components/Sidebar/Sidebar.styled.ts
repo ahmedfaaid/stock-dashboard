@@ -3,10 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 export const StyledSidebar = styled.aside`
   width: 20%;
-  height: calc(100vh - 81px);
-  min-height: 100%;
   padding: 20px;
-  background-color: ${({ theme }) => theme.colors.blue};
 `;
 
 export const StyledSideNav = styled.nav`
