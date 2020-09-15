@@ -45,6 +45,7 @@ export const StyledHeroButton = styled(NavLink)`
   font-weight: 600;
   text-transform: uppercase;
   transition: all ease-in-out 0.1s;
+  border-radius: 10px;
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.light};
