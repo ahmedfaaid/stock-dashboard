@@ -15,7 +15,7 @@ export default function Dashboard() {
   const yearAgo = moment().subtract(1, 'years').unix();
 
   return (
-    <Layout>
+    <Layout showSidebar>
       <section style={{ width: '100%' }}>
         <LineChart
           currentStock={currentStock}
