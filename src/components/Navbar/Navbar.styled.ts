@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 export const StyledNavbar = styled.nav`
   width: 100%;
@@ -14,6 +15,9 @@ export const StyledLogoContainer = styled.div`
 
 export const StyledLogoLink = styled(NavLink)`
   text-decoration: none;
+  color: inherit;
+  font-size: 30px;
+  font-weight: 700;
 `;
 
 export const StyledNavContainer = styled.div`
