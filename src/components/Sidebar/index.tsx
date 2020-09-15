@@ -13,7 +13,7 @@ export default function Sidebar() {
             <StyledLink to='/news'>News</StyledLink>
           </li>
           <li>
-            <StyledLink to='/recommendation'>Recommendation</StyledLink>
+            <StyledLink to='/stocks'>Stocks List</StyledLink>
           </li>
         </ul>
       </StyledSideNav>
