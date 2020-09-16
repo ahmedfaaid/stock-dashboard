@@ -15,7 +15,7 @@ export default function Home() {
           <p>Simple interface</p>
           <p>No clutter</p>
           <p>Straight forward graphs and news.</p>
-          <div style={{ marginTop: '40px' }}>
+          <div style={{ marginTop: '80px' }}>
             <StyledHeroButton to='/register'>Get Started</StyledHeroButton>
             <StyledHeroButton to='/login'>Login</StyledHeroButton>
           </div>
