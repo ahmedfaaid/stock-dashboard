@@ -1,6 +1,5 @@
 import React from 'react';
 import { Formik, FormikHelpers, ErrorMessage } from 'formik';
-import * as yup from 'yup';
 import Layout from '../../components/Layout';
 import {
   StyledField,
@@ -8,6 +7,7 @@ import {
   StyledFormContainer,
   SubmitButton
 } from '../../styles/Form';
+import { registerSchema } from '../../util/validationSchema';
 
 interface Values {
   firstName: String;
@@ -25,22 +25,6 @@ export default function Register() {
     password: '',
     confirmPassword: ''
   };
-
-  const registerSchema = yup.object().shape({
-    firstName: yup.string().required('Please provide a first name'),
-    lastName: yup.string().required('Please provide a last name'),
-    email: yup
-      .string()
-      .email('Please enter a valid email')
-      .required('Please provide an email address'),
-    password: yup.string().required('Please enter a password'),
-    confirmPassword: yup
-      .string()
-      .required('Please confirm your password')
-      .test('password-match', 'Passwords must match', function (value) {
-        return this.parent.password === value;
-      })
-  });
 
   return (
     <Layout showSidebar={false}>
