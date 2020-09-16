@@ -57,6 +57,7 @@ export const SubmitButton = styled.button`
   text-transform: uppercase;
   border: none;
   border-radius: 10px;
+  outline: none;
   cursor: pointer;
   background-color: ${({ theme }) => theme.colors.white};
   color: ${({ theme }) => theme.colors.primary};
