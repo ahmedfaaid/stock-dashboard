@@ -32,11 +32,11 @@ export default function Login() {
         <Formik
           initialValues={initialValues}
           validationSchema={loginSchema}
-          onSubmit={(
+          onSubmit={async (
             values: Values,
             { setSubmitting }: FormikHelpers<Values>
           ) => {
-            setTimeout(() => {
+            await setTimeout(() => {
               alert(JSON.stringify(values, null, 2));
               setSubmitting(false);
             }, 500);
