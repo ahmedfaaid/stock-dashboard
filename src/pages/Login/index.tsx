@@ -1,7 +1,11 @@
 import React from 'react';
 import { Formik, FormikHelpers } from 'formik';
 import Layout from '../../components/Layout';
-import { StyledField, StyledForm, StyledFormContainer } from './Login.styled';
+import {
+  StyledField,
+  StyledForm,
+  StyledFormContainer
+} from '../../styles/Form';
 
 interface Values {
   email: String;
