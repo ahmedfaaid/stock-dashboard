@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { GlobalStyles } from './styles/GlobalStyles';
 import Dashboard from './pages/Dashboard';
 import Home from './pages/Home';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 function App() {
   return (
@@ -10,6 +12,12 @@ function App() {
       <GlobalStyles />
       <Router>
         <Switch>
+          <Route exact path='/register'>
+            <Register />
+          </Route>
+          <Route exact path='/login'>
+            <Login />
+          </Route>
           <Route exact path='/dashboard'>
             <Dashboard />
           </Route>
