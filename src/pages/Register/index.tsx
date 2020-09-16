@@ -1,5 +1,5 @@
 import React from 'react';
-import { Formik, FormikHelpers } from 'formik';
+import { Formik, FormikHelpers, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import Layout from '../../components/Layout';
 import {
@@ -67,6 +67,7 @@ export default function Register() {
                 placeholder='Your first name'
                 type='text'
               />
+              <ErrorMessage name='firstName' />
             </div>
 
             <div>
@@ -77,6 +78,7 @@ export default function Register() {
                 placeholder='Your last name'
                 type='text'
               />
+              <ErrorMessage name='lastName' />
             </div>
 
             <div>
@@ -87,6 +89,7 @@ export default function Register() {
                 placeholder='you@finstracka.com'
                 type='email'
               />
+              <ErrorMessage name='email' />
             </div>
 
             <div>
@@ -97,6 +100,7 @@ export default function Register() {
                 placeholder='******'
                 type='password'
               />
+              <ErrorMessage name='password' />
             </div>
 
             <div>
@@ -107,6 +111,7 @@ export default function Register() {
                 placeholder='******'
                 type='password'
               />
+              <ErrorMessage name='confirmPassword' />
             </div>
           </StyledForm>
         </Formik>
