@@ -1,5 +1,5 @@
 import React from 'react';
-import { Formik, FormikHelpers } from 'formik';
+import { Formik, FormikHelpers, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import Layout from '../../components/Layout';
 import {
@@ -41,27 +41,31 @@ export default function Login() {
             }, 500);
           }}
         >
-          <StyledForm>
-            <div>
-              <label htmlFor='email'>Email</label>
-              <StyledField
-                id='email'
-                name='email'
-                placeholder='you@finstracka.com'
-                type='email'
-              />
-            </div>
+          {({ errors }) => (
+            <StyledForm>
+              <div>
+                <label htmlFor='email'>Email</label>
+                <StyledField
+                  id='email'
+                  name='email'
+                  placeholder='you@finstracka.com'
+                  type='email'
+                />
+                <ErrorMessage name='email' />
+              </div>
 
-            <div>
-              <label htmlFor='password'>Password</label>
-              <StyledField
-                id='password'
-                name='password'
-                placeholder='******'
-                type='password'
-              />
-            </div>
-          </StyledForm>
+              <div>
+                <label htmlFor='password'>Password</label>
+                <StyledField
+                  id='password'
+                  name='password'
+                  placeholder='******'
+                  type='password'
+                />
+                <ErrorMessage name='password' />
+              </div>
+            </StyledForm>
+          )}
         </Formik>
       </StyledFormContainer>
     </Layout>
