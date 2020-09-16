@@ -1,5 +1,6 @@
 import React from 'react';
 import { Formik, FormikHelpers } from 'formik';
+import * as yup from 'yup';
 import Layout from '../../components/Layout';
 import {
   StyledField,
@@ -14,12 +15,22 @@ interface Values {
 
 export default function Login() {
   const initialValues: Values = { email: '', password: '' };
+
+  const loginSchema = yup.object().shape({
+    email: yup
+      .string()
+      .email('Please enter a valid email')
+      .required('Please provide an email address'),
+    password: yup.string().required('Please enter a password')
+  });
+
   return (
     <Layout showSidebar={false}>
       <StyledFormContainer>
         <h2>Login</h2>
         <Formik
           initialValues={initialValues}
+          validationSchema={loginSchema}
           onSubmit={(
             values: Values,
             { setSubmitting }: FormikHelpers<Values>
