@@ -47,3 +47,23 @@ export const StyledField = styled(Field)`
     color: #b8b8b8;
   }
 `;
+
+export const SubmitButton = styled.button`
+  display: block;
+  width: 120px;
+  padding: 5px 20px;
+  margin: 40px auto 0 auto;
+  font-size: 20px;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.primary};
+  transition: all ease-in-out 0.1s;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.light};
+    color: ${({ theme }) => theme.colors.white};
+  }
+`;

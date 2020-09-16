@@ -5,7 +5,8 @@ import Layout from '../../components/Layout';
 import {
   StyledField,
   StyledForm,
-  StyledFormContainer
+  StyledFormContainer,
+  SubmitButton
 } from '../../styles/Form';
 
 interface Values {
@@ -64,6 +65,7 @@ export default function Login() {
                 />
                 <ErrorMessage name='password' />
               </div>
+              <SubmitButton type='submit'>Submit</SubmitButton>
             </StyledForm>
           )}
         </Formik>
