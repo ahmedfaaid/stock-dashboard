@@ -22,8 +22,8 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   td {
-      padding-top: 10px;
-      padding-bottom: 10px;
+      padding-top: 5px;
+      padding-bottom: 5px;
     }
 `;
 

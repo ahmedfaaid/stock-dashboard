@@ -4,13 +4,14 @@ export const StyledDataCard = styled.div`
   border-radius: 10px;
   background-color: ${({ theme }) => theme.colors.offWhite};
   width: 90%;
-  height: 320px;
+  height: 350px;
   max-height: 320px;
   padding: 15px;
   box-shadow: 3px 4px 3px ${({ theme }) => theme.colors.white};
 
   table {
-    margin-left: 20px;
+    width: 80%;
+    margin: auto;
   }
 
   tr {
