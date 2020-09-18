@@ -1,5 +1,6 @@
 import React from 'react';
 import { Formik, FormikHelpers, ErrorMessage } from 'formik';
+import { useHistory } from 'react-router-dom';
 import Layout from '../../components/Layout';
 import {
   StyledField,
@@ -8,6 +9,7 @@ import {
   SubmitButton
 } from '../../styles/Form';
 import { loginSchema } from '../../util/validationSchema';
+import { login } from '../../util/authRequests';
 
 interface Values {
   email: String;
@@ -16,6 +18,8 @@ interface Values {
 
 export default function Login() {
   const initialValues: Values = { email: '', password: '' };
+
+  const history = useHistory();
 
   return (
     <Layout showSidebar={false}>
@@ -28,10 +32,9 @@ export default function Login() {
             values: Values,
             { setSubmitting }: FormikHelpers<Values>
           ) => {
-            await setTimeout(() => {
-              alert(JSON.stringify(values, null, 2));
-              setSubmitting(false);
-            }, 500);
+            await login(values);
+            setSubmitting(false);
+            await history.push('/dashboard');
           }}
         >
           {({ errors }) => (
