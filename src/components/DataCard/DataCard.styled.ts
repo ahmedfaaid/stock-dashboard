@@ -10,7 +10,7 @@ export const StyledDataCard = styled.div`
   box-shadow: 3px 4px 3px ${({ theme }) => theme.colors.white};
 
   table {
-    width: 80%;
+    width: 90%;
     margin: auto;
   }
 
