@@ -1,5 +1,6 @@
 import React from 'react';
 import { Formik, FormikHelpers, ErrorMessage } from 'formik';
+import { useHistory } from 'react-router-dom';
 import Layout from '../../components/Layout';
 import {
   StyledField,
@@ -8,13 +9,14 @@ import {
   SubmitButton
 } from '../../styles/Form';
 import { registerSchema } from '../../util/validationSchema';
+import { register } from '../../util/authRequests';
 
 interface Values {
   firstName: String;
   lastName: String;
   email: String;
   password: String;
-  confirmPassword: String;
+  verifyPassword: String;
 }
 
 export default function Register() {
@@ -23,8 +25,10 @@ export default function Register() {
     lastName: '',
     email: '',
     password: '',
-    confirmPassword: ''
+    verifyPassword: ''
   };
+
+  const history = useHistory();
 
   return (
     <Layout showSidebar={false}>
@@ -37,10 +41,9 @@ export default function Register() {
             values: Values,
             { setSubmitting }: FormikHelpers<Values>
           ) => {
-            await setTimeout(() => {
-              alert(JSON.stringify(values, null, 2));
-              setSubmitting(false);
-            }, 500);
+            await register(values);
+            setSubmitting(false);
+            await history.push('/dashboard');
           }}
         >
           <StyledForm>
@@ -89,14 +92,14 @@ export default function Register() {
             </div>
 
             <div>
-              <label htmlFor='confirmPassword'>Confirm Password</label>
+              <label htmlFor='verifyPassword'>Verify Password</label>
               <StyledField
-                id='confirmPassword'
-                name='confirmPassword'
+                id='verifyPassword'
+                name='verifyPassword'
                 placeholder='******'
                 type='password'
               />
-              <ErrorMessage name='confirmPassword' />
+              <ErrorMessage name='verifyPassword' />
             </div>
             <SubmitButton type='submit'>Submit</SubmitButton>
           </StyledForm>

@@ -8,7 +8,7 @@ export const registerSchema = yup.object().shape({
     .email('Please enter a valid email')
     .required('Please provide an email address'),
   password: yup.string().required('Please enter a password'),
-  confirmPassword: yup
+  verifyPassword: yup
     .string()
     .required('Please confirm your password')
     .test('password-match', 'Passwords must match', function (value) {
