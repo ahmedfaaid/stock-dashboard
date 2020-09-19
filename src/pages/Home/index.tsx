@@ -8,7 +8,7 @@ import {
 
 export default function Home() {
   return (
-    <Layout showSidebar={false}>
+    <Layout showSidebar={false} page='Home'>
       <StyledHome>
         <StyledHeroContainer>
           <h2>Track and monitor company stocks and news</h2>

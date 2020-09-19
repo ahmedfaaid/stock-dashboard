@@ -22,7 +22,7 @@ export default function Login() {
   const history = useHistory();
 
   return (
-    <Layout showSidebar={false}>
+    <Layout showSidebar={false} page='Login'>
       <StyledFormContainer>
         <h2>Login</h2>
         <Formik

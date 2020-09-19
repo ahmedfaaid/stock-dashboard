@@ -31,7 +31,7 @@ export default function Register() {
   const history = useHistory();
 
   return (
-    <Layout showSidebar={false}>
+    <Layout showSidebar={false} page='Register'>
       <StyledFormContainer>
         <h2>Register</h2>
         <Formik

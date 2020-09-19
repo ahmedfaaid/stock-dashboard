@@ -7,6 +7,7 @@ import Sidebar from './Sidebar';
 interface LayoutProps {
   children: ReactNode;
   showSidebar: Boolean;
+  page: String;
 }
 
 const StyledMain = styled.main`
@@ -18,11 +19,13 @@ const StyledMain = styled.main`
 export default function Layout({
   children,
   showSidebar,
+  page,
   ...props
 }: LayoutProps) {
   return (
     <div>
       <Helmet>
+        <title>{`${page} | FinnStracka`}</title>
         <link
           href='https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,700&display=swap'
           rel='stylesheet'
