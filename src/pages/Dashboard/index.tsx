@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
 import moment from 'moment';
+import { withRouter } from 'react-router-dom';
 import Layout from '../../components/Layout';
 import LineChart from '../../components/LineChart';
 import CompInfo from '../../components/CompInfo';
@@ -8,7 +9,7 @@ import CompNews from '../../components/CompNews';
 import { StyledInfoSection } from './Dashboard.styled';
 import CompStocks from '../../components/CompStocks';
 
-export default function Dashboard() {
+function Dashboard() {
   const [currentStock, setCurrentStock] = useState('AAPL');
 
   const today = moment().unix();
@@ -31,3 +32,5 @@ export default function Dashboard() {
     </Layout>
   );
 }
+
+export default withRouter(Dashboard);
