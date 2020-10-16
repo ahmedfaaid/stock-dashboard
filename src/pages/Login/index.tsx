@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Formik, FormikHelpers, ErrorMessage } from 'formik';
 import { useHistory } from 'react-router-dom';
 import Layout from '../../components/Layout';
@@ -10,6 +10,7 @@ import {
 } from '../../styles/Form';
 import { loginSchema } from '../../util/validationSchema';
 import { login } from '../../util/authRequests';
+import { AuthContext } from '../../contexts/AuthContext';
 
 interface Values {
   email: String;
@@ -20,6 +21,7 @@ export default function Login() {
   const initialValues: Values = { email: '', password: '' };
 
   const history = useHistory();
+  const { setAuth } = useContext(AuthContext);
 
   return (
     <Layout showSidebar={false} page='Login'>
@@ -33,6 +35,7 @@ export default function Login() {
             { setSubmitting }: FormikHelpers<Values>
           ) => {
             await login(values);
+            await setAuth();
             setSubmitting(false);
             await history.push('/dashboard');
           }}

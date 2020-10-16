@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Formik, FormikHelpers, ErrorMessage } from 'formik';
 import { useHistory } from 'react-router-dom';
 import Layout from '../../components/Layout';
@@ -10,6 +10,7 @@ import {
 } from '../../styles/Form';
 import { registerSchema } from '../../util/validationSchema';
 import { register } from '../../util/authRequests';
+import { AuthContext } from '../../contexts/AuthContext';
 
 interface Values {
   firstName: String;
@@ -29,6 +30,7 @@ export default function Register() {
   };
 
   const history = useHistory();
+  const { setAuth } = useContext(AuthContext);
 
   return (
     <Layout showSidebar={false} page='Register'>
@@ -42,6 +44,7 @@ export default function Register() {
             { setSubmitting }: FormikHelpers<Values>
           ) => {
             await register(values);
+            await setAuth();
             setSubmitting(false);
             await history.push('/dashboard');
           }}
