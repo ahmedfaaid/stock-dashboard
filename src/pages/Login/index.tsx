@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Formik, FormikHelpers, ErrorMessage } from 'formik';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import Layout from '../../components/Layout';
 import {
   StyledField,
@@ -63,6 +63,12 @@ export default function Login() {
                 />
                 <ErrorMessage name='password' />
               </div>
+              <p style={{ textAlign: 'center', marginTop: '15px' }}>
+                Don't have an account?{' '}
+                <Link to='/register' style={{ color: '#ffffff' }}>
+                  Register here.
+                </Link>
+              </p>
               <SubmitButton type='submit'>Submit</SubmitButton>
             </StyledForm>
           )}
