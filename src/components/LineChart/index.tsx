@@ -21,7 +21,11 @@ export default function LineChart({ currentStock, today, yearAgo }: Props) {
       }
     },
     xaxis: {
-      categories: []
+      categories: [],
+      type: 'datetime',
+      labels: {
+        format: 'MMM yy'
+      }
     },
     yaxis: {
       labels: {
@@ -86,19 +90,25 @@ export default function LineChart({ currentStock, today, yearAgo }: Props) {
         );
         const data = await res.json();
 
+        // convert dates to format readable by apex charts datetime
         const convertedDates = data.t.map(date =>
-          moment.unix(date).format('DD-MM-YYYY')
+          moment.unix(date).format('LLLL')
         );
+
+        // convert closing prices to 2 decimal places
+        const convertedPrices = data.c.map(price => price.toFixed(2));
+
         setChartOptions(prevState => ({
           ...prevState,
           xaxis: {
+            ...prevState.xaxis,
             categories: convertedDates
           }
         }));
         setChartSeries([
           {
             name: 'Closing Price',
-            data: [...data.c]
+            data: [...convertedPrices]
           }
         ]);
       } catch (error) {
