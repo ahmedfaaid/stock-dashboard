@@ -4,6 +4,7 @@ export const login = async values => {
     headers: {
       'Content-Type': 'application/json'
     },
+    credentials: 'include',
     body: JSON.stringify(values)
   });
 
@@ -20,6 +21,7 @@ export const register = async values => {
     headers: {
       'Content-Type': 'application/json'
     },
+    credentials: 'include',
     body: JSON.stringify(values)
   });
 
